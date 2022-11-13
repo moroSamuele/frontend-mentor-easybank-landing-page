@@ -1,57 +1,93 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import Header from '../components/Header';
+import HeaderMobile from '../components/HeaderMobile';
+import Hero from '../components/Hero';
+import HeroMobile from '../components/HeroMobile';
+import { H2 } from '../components/H2';
+import Service from '../components/Service';
+import Article from '../components/Article';
+import Footer from '../components/Footer';
 
-export default function Home() {
-  return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js 13!</a>
-        </h1>
+import services from '../data/services.json';
+import articles from '../data/articles.json';
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
 
-        <div className={styles.grid}>
-          <a href="https://beta.nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js 13</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Explore the Next.js 13 playground.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates/next.js/app-directory?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>Deploy your Next.js site to a public URL with Vercel.</p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
-    </div>
-  )
+interface Service {
+  title: string;
+  image: string;
+  text: string;
 }
+
+interface ArticleBlog {
+  title: string;
+  author: string;
+  image: string;
+  imageAlt: string;
+  text: string;
+}
+
+const Home = () => {
+  const bankServices: Service[] = services.service;
+  const blogArticles: ArticleBlog[] = articles.article;
+
+	return (
+		<>
+			<Header />
+      <HeaderMobile />
+      <Hero />
+      <HeroMobile />
+
+      { /* Banking services container */ }
+      <div className="flex flex-col bg-lightGrayishBlue float-left py-[96px] px-[24px] sm:px-[165px]">
+        <div className="max-w-[635px]">
+          <H2 text="Why choose Easybank?" />
+          <p className="text-grayishBlue tracking-[-0.28125px] text-[18px] leading-[28px] font-[400]">
+            We leverage Open Banking to turn your bank account into your financial hub.
+            Control your finances like never before.
+          </p>
+        </div>
+
+        { /* Banking services list */ }
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-[30px] mt-[72px]">
+          {
+            bankServices.map((service, index) => {
+              return (
+                <Service
+                  key={index}
+                  image={service.image}
+                  title={service.title}
+                  text={service.text}
+                />
+              )
+            })
+          }
+        </div>
+      </div>
+
+      { /* Banking blog articles container */ }
+      <div className="flex flex-col float-left py-[96px] px-[24px] sm:px-[165px] bg-veryLightGray">
+        <H2 text="Latest Article" />
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-[30px]">
+          {
+            blogArticles.map((article, index) => {
+              return (
+                <Article
+                  key={index}
+                  image={article.image}
+                  imageAlt={article.imageAlt}
+                  author={article.author}
+                  title={article.title}
+                  text={article.text}
+                />
+              )
+            })
+          }
+        </div>
+      </div>
+
+      { /* Footer container */ }
+      <Footer />
+		</>
+	)
+}
+
+export default Home;
