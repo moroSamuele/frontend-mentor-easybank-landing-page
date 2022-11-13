@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import CtaButton from "./CtaButton";
 
 
@@ -17,8 +19,20 @@ const Hero = () => {
       </div>
 
       <div className="absolute w-[calc(100%-450px)] flex justify-center items-center top-[-148px] right-[-162px]">
-          <img src="/images/bg-intro-desktop.svg" className="absolute h-[956px] top-0 right-0 z-0" />
-          <img src="/images/image-mockups.png" className="absolute h-[901px] top-[118px] right-[36px] z-10" />
+          <Image
+            src="/images/bg-intro-desktop.svg"
+            alt="Background Hero Desktop"
+            width="1371"
+            height="956"
+            className="absolute top-0 right-0 z-0" 
+          />
+          <Image
+            src="/images/image-mockups.png"
+            alt="Hero Desktop Mockups"
+            width="732"
+            height="901"
+            className="absolute top-[118px] right-[36px] z-10"
+          />
       </div>
     </div>
   )

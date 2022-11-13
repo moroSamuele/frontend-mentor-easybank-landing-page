@@ -27,8 +27,11 @@ module.exports = {
         'mobileMenuGradient': "linear-gradient(180deg, #2D314D 0%, rgba(45, 49, 77, 0.0001) 100%);"
       },
       screens: {
-        'xs': '375px'
+        'xs': '375px',
         // => @media (min-width: 375px) { ... }
+
+        'sm': '600px'
+        // => @media (min-width: 600px) { ... }
       }
     },
   },

@@ -1,12 +1,26 @@
+import Image from "next/image";
+
 import CtaButton from "./CtaButton";
 
 
 const HeroMobile = () => {
   return (
     <div className="flex flex-col md:hidden float-left w-full bg-veryLightGray">
-      <img src="/images/bg-intro-mobile.svg" className="absolute w-[968px] top-[-248px] right-0" />
-      <div className="relative float-left h-[280px] w-full flex justify-center z-10">
-        <img src="/images/image-mockups.png" className="relative h-[415px] top-[-116px]" />
+      <Image
+        src="/images/bg-intro-mobile.svg"
+        alt="Background Hero Mobile"
+        width="968"
+        height="398"
+        className="absolute top-[-7px] sm:top-[-217px] right-0"
+      />
+      <div className="relative float-left h-[415px] w-full flex justify-center z-10">
+        <Image
+          src="/images/image-mockups.png"
+          alt="Hero Mobile Mockups"
+          width="340"
+          height="415"
+          className="relative top-[-57px]"
+        />
       </div>
       <div className="flex items-center justify-between px-[24px] float-left mt-[40px] pb-[88px]">
         <div className="w-full flex flex-col space-y-[24px] items-center text-center">
